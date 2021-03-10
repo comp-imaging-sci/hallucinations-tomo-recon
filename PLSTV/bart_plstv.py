@@ -27,7 +27,7 @@ if not os.path.exists(recon_dir):
     os.makedirs(recon_dir)
 
 # Load the mask
-mask = np.load('../mask.npy')
+mask = np.load('../recon_data/mask.npy')
 
 # k-space directory
 kspace_dir = '../recon_data/kspace_'+dist_type+'/'
