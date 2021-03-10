@@ -3,7 +3,7 @@ Script for performing PLS-TV reconstruction using the BART toolbox.
 See intructions for installing the BART toolbox here: https://mrirecon.github.io/bart/
 Recommended BART version >= 0.5.00
 
-Before running this script, export the following variables to the current shell environment 
+Before running this script, export the following variables to the current shell environment:
 export TOOLBOX_PATH=/path/to/bart/
 export PATH=$TOOLBOX_PATH:$PATH
 
@@ -22,7 +22,7 @@ args = parser.parse_args()
 
 dim = 320 # Image dimensions: dimxdim
 num_recons = 69 # Number of k-space measurements
-recon_dir = './recons_plstv/' # Directory for saving the reconstructed images
+recon_dir = './recons/' # Directory for saving the reconstructed images
 if not os.path.exists(recon_dir):
     os.makedirs(recon_dir)
 
