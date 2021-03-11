@@ -17,12 +17,14 @@ import argparse
 import cfl
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--dist-type",type=str,help="Type of data distribution",default="ind")
+parser.add_argument("--dist-type",choices=['ind,ood'],required=True,help="Type of data distribution")
+parser.add_argument("--idx",type=int,default=0,required=True,help="Which image number")
 args = parser.parse_args()
+dist_type = args.dist_type
+idx = args.idx
 
 dim = 320 # Image dimensions: dimxdim
-num_recons = 69 # Number of k-space measurements
-recon_dir = './recons/' # Directory for saving the reconstructed images
+recon_dir = './recons_'+dist_type+'/' # Directory for saving the reconstructed images
 if not os.path.exists(recon_dir):
     os.makedirs(recon_dir)
 
@@ -38,15 +40,14 @@ lmda = '0.02'
 # Sensitivity map (all ones)
 smap = np.ones([dim,dim],np.complex64)
 
-for idx in range(num_recons):
-    print('Recon '+str(idx))
-    kspace = np.load(kspace_dir+'kspace_'+str(idx)+'.npy')
-    kspace = kspace * dim
-    kspace = kspace * mask
-    #recon = bart(1,'pics -d2 -i200 -g G0 -S -R T:7:0:'+lmda,kspace,smap) # If running on GPU
-    recon = bart(1,'pics -d2 -i200 -S -R T:7:0:'+lmda,kspace,smap) # If running on CPU
-    recon = np.abs(recon)/dim
-    np.save(recon_dir+'recon_'+str(idx)+'.npy',recon)
+# Perform PLS-TV reconstruction
+kspace = np.load(kspace_dir+'kspace_'+str(idx)+'.npy')
+kspace = kspace * dim
+kspace = kspace * mask
+#recon = bart(1,'pics -d2 -i200 -g G0 -S -R T:7:0:'+lmda,kspace,smap) # If running on GPU
+recon = bart(1,'pics -d2 -i200 -S -R T:7:0:'+lmda,kspace,smap) # If running on CPU
+recon = np.abs(recon)/dim
+np.save(recon_dir+'recon_'+str(idx)+'.npy',recon)
 
 
 
