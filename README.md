@@ -20,3 +20,17 @@ cd UNET
 ```
 python extract_recons.py
 ```
+
+## PLS-TV
+The Berkeley Advanced Reconstruction Toolbox (BART) software is used for the PLS-TV method: https://mrirecon.github.io/bart/. Please install the BART software before running our code for PLS-TV. Our implementation was successfully tested with `bart 0.5.00`. 
+
+#### Instructions
+1. Enter the `PLSTV` directory from root:
+```
+cd PLSTV
+```
+2. Run the script that performs PLS-TV using BART from an in-distribution (ind) or out-of-distribution (ood) k-space data and the corresponding data index (0-4). Example:
+```
+python bart_plstv.py --dist-type ind --idx 2
+```
+
