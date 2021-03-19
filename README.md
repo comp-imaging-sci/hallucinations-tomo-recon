@@ -58,8 +58,9 @@ cd compute_maps
 python compute_raw_maps.py --recon-type UNET --dist-type ood --map-type null_hm --idx 0
 ```
 The error map or hallucination map will saved in the subdirectory `[recon_type]_[map_type]_[dist-type]`.
+
 3. Compute the specific map (`em` or `null_hm`) after the corresponding raw map has been computed in Step 2. Example of computing specific null space hallucination map after performing the example in Step 2:
 ```
 python compute_specific_maps.py --recon-type UNET --dist-type ood --map-type null_hm --idx 0
 ```
-The specific map is saved as a `.png` file in the subdirectory
+The specific map is saved as a `.png` file in the subdirectory `[recon_type]_specific_[map_type]_[dist-type]`.
