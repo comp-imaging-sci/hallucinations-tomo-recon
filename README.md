@@ -64,3 +64,13 @@ The error map or hallucination map will saved in the subdirectory `[recon_type]_
 python compute_specific_maps.py --recon-type UNET --dist-type ood --map-type null_hm --idx 0
 ```
 The specific map is saved as a `.png` file in the subdirectory `[recon_type]_specific_[map_type]_[dist-type]`.
+
+## Citation
+```
+@article{bhadra2020hallucinations,
+  title={On hallucinations in tomographic image reconstruction},
+  author={Bhadra, Sayantan and Kelkar, Varun A and Brooks, Frank J and Anastasio, Mark A},
+  journal={arXiv preprint arXiv:2012.00646},
+  year={2020}
+}
+```
