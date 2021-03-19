@@ -8,13 +8,13 @@ Codes related to the paper "On hallucinations in tomographic image reconstructio
 * `compute_maps`: Contains codes for computing hallucination maps and specific maps.
 
 ## U-Net
-The U-Net model was trained using codes from https://github.com/facebookresearch/fastMRI which uses `pytorch` and `pytorch-lightning`. The true object images for training were axial brain MRI images collected from the NYU fastMRI Initiative database: https://arxiv.org/pdf/1811.08839.pdf. We have placed the pre-trained model used in our numerical studies as `UNET/experiments/h_map/epoch\=49.ckpt` which can be used to reconstruct images from the test dataset. The hyperparameters used during training can be found at `UNET/experiments/h_map/meta_tags.csv`.
+The U-Net model was trained using codes from https://github.com/facebookresearch/fastMRI which uses `pytorch` and `pytorch-lightning`. We have placed the pre-trained model used in our numerical studies as `UNET/experiments/h_map/epoch\=49.ckpt` which can be used to reconstruct images from the test dataset. The hyperparameters used during training can be found at `UNET/experiments/h_map/meta_tags.csv`.
 
 #### Dependencies
 The codes for reconstructing images using the trained U-Net model have been tested successfully using the `pytorch` virtual environment installed with `conda 4.5.12`. The relevant softwares which are pre-requisites and must be installed within the virtual environment have been listed in `UNET/requirements.txt`.
 
 #### Instructions
-1. Enter the `UNET` directory from root:
+1. Enter the `UNET` directory from root directory:
 ```
 cd UNET
 ```
@@ -26,12 +26,13 @@ cd UNET
 ```
 python extract_recons.py
 ```
+The reconstructed images will be saved in new subdirectories `recons_ind` and `recons_ood`.
 
 ## PLS-TV
 The Berkeley Advanced Reconstruction Toolbox (BART) software is used for the PLS-TV method: https://mrirecon.github.io/bart/. Please install the BART software before running our code for PLS-TV. Our implementation was successfully tested with `bart-0.5.00`. 
 
 #### Instructions
-1. Enter the `PLSTV` directory from root:
+1. Enter the `PLSTV` directory from root directory:
 ```
 cd PLSTV
 ```
@@ -39,4 +40,26 @@ cd PLSTV
 ```
 python bart_plstv.py --dist-type ind --idx 2
 ```
+The reconstructed image will be saved in the subdirectory `recons_ind` or `recons_ood` depending on `dist-type`.
 
+## Computing hallucination maps
+An error map or a hallucination map can be computed after an image has been reconstructed. The type of map is indicated by entering any of the following arguments:
+* `em`: Error map
+* `meas_hm`: Measurement space hallucination map
+* `null_hm`: Null space hallucination map
+
+#### Instructions
+1. Enter the directory `compute_maps` from root directory:
+```
+cd compute_maps
+```
+2. Example of computing the null space hallucination map for an ood image reconstructed using the U-Net:
+```
+python compute_raw_maps.py --recon-type UNET --dist-type ood --map-type null_hm --idx 0
+```
+The error map or hallucination map will saved in the subdirectory `[recon_type]_[map_type]_[dist-type]`.
+3. Compute the specific map (`em` or `null_hm`) after the corresponding raw map has been computed in Step 2. Example of computing specific null space hallucination map after performing the example in Step 2:
+```
+python compute_specific_maps.py --recon-type UNET --dist-type ood --map-type null_hm --idx 0
+```
+The specific map is saved as a `.png` file in the subdirectory
