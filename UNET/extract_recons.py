@@ -16,7 +16,6 @@ if not os.path.exists(ensemble_dir_ood):
     os.makedirs(ensemble_dir_ood)
 
 # Ensemble of ind recons
-print('Start saving ind recons\n')
 filename = recon_dir+'file_ind.h5'
 recon = h5py.File(filename,'r')['reconstruction']
 recon = np.asarray(recon)
@@ -25,7 +24,6 @@ for idx in range(num_recons):
     np.save(ensemble_dir_ind+'recon_'+str(idx)+'.npy',recon_slice)
 
 # Ensemble of ood recons
-print('Start saving ood recons\n')
 filename = recon_dir+'file_ood.h5'
 recon = h5py.File(filename,'r')['reconstruction']
 recon = np.asarray(recon)

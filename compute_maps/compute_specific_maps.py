@@ -11,8 +11,8 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--recon-type",choices=['UNET','PLSTV','DIP'],required=True,help="Type of reconstruction method")
-parser.add_argument("--dist-type",choices=['ind,ood'],required=True,help="Type of data distribution")
-parser.add_argument("--map-type",choices=['em,null_hm'],required=True,help="Type of map")
+parser.add_argument("--dist-type",choices=['ind','ood'],required=True,help="Type of data distribution")
+parser.add_argument("--map-type",choices=['em','null_hm'],required=True,help="Type of map")
 parser.add_argument("--idx",type=int,default=0,required=True,help="Which image number")
 args = parser.parse_args()
 

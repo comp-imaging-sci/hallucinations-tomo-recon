@@ -16,7 +16,7 @@ from torch.utils.data import DistributedSampler, DataLoader
 from common import evaluate
 from common.utils import save_reconstructions
 from data.mri_data import SliceData
-
+from pathlib import Path
 
 class MRIModel(pl.LightningModule):
     """
@@ -46,7 +46,8 @@ class MRIModel(pl.LightningModule):
     def _create_data_loader(self, data_transform, data_partition, sample_rate=None):
         sample_rate = sample_rate or self.hparams.sample_rate
         dataset = SliceData(
-            root=self.hparams.data_path / f'{self.hparams.challenge}_{data_partition}',
+            #root=self.hparams.data_path / f'{self.hparams.challenge}_{data_partition}',
+            root='./'f'{self.hparams.challenge}_{data_partition}',
             transform=data_transform,
             sample_rate=sample_rate,
             challenge=self.hparams.challenge
@@ -139,5 +140,6 @@ class MRIModel(pl.LightningModule):
                 outputs[fname].append((slice, log['output'][i]))
         for fname in outputs:
             outputs[fname] = np.stack([out for _, out in sorted(outputs[fname])])
-        save_reconstructions(outputs, self.hparams.exp_dir / self.hparams.exp / 'reconstructions')
+        #save_reconstructions(outputs, self.hparams.exp_dir / self.hparams.exp / 'reconstructions')
+        save_reconstructions(outputs, Path('experiments/h_map/reconstructions'))
         return dict()

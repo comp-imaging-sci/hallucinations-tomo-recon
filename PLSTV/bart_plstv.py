@@ -17,7 +17,7 @@ import argparse
 import cfl
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--dist-type",choices=['ind,ood'],required=True,help="Type of data distribution")
+parser.add_argument("--dist-type",choices=['ind','ood'],required=True,help="Type of data distribution")
 parser.add_argument("--idx",type=int,default=0,required=True,help="Which image number")
 args = parser.parse_args()
 dist_type = args.dist_type

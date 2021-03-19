@@ -20,7 +20,7 @@ from torch.optim import RMSprop
 
 import sys,os
 #sys.path.append('~/hallucinations-tomo-recon/UNET/') # Change directory according to the saved location
-sys.path.append('/shared/radon/MRI/hallucination_map_data/pediatric_recon_data/hallucinations-tomo-recon/UNET/') # Change directory according to the saved location
+sys.path.append('./') 
 from common.args import Args
 from common.subsample import create_mask_for_mask_type
 from data import transforms
