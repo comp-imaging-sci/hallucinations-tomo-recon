@@ -1,10 +1,16 @@
 # hallucinations-tomo-recon
 Codes related to the paper "On hallucinations in tomographic image reconstruction" by Bhadra *et al.*: https://arxiv.org/pdf/2012.00646.pdf.
 
+## Directory structure and usage
+* `recon_data`: Contains 5 data samples each (indexed as 0-4) from in-distribution (ind) and out-of-distribution (ood) data. Each data sample contains the true object, segmentation mask and simulated k-space data.
+* `UNET`: Contains codes used for reconstructing image using a pre-trained U-Net model.
+* `PLSTV`: Contains code for reconstructing image by use of the PLS-TV method.
+* `compute_maps`: Contains codes for computing hallucination maps and specific maps.
+
 ## U-Net
 The U-Net model was trained using codes from https://github.com/facebookresearch/fastMRI which uses `pytorch` and `pytorch-lightning`. The true object images for training were axial brain MRI images collected from the NYU fastMRI Initiative database: https://arxiv.org/pdf/1811.08839.pdf. We have placed the pre-trained model used in our numerical studies as `UNET/experiments/h_map/epoch\=49.ckpt` which can be used to reconstruct images from the test dataset. The hyperparameters used during training can be found at `UNET/experiments/h_map/meta_tags.csv`.
 
-#### Pre-requisites and environments
+#### Dependencies
 The codes for reconstructing images using the trained U-Net model have been tested successfully using the `pytorch` virtual environment installed with `conda 4.5.12`. The relevant softwares which are pre-requisites and must be installed within the virtual environment have been listed in `UNET/requirements.txt`.
 
 #### Instructions
@@ -22,14 +28,14 @@ python extract_recons.py
 ```
 
 ## PLS-TV
-The Berkeley Advanced Reconstruction Toolbox (BART) software is used for the PLS-TV method: https://mrirecon.github.io/bart/. Please install the BART software before running our code for PLS-TV. Our implementation was successfully tested with `bart 0.5.00`. 
+The Berkeley Advanced Reconstruction Toolbox (BART) software is used for the PLS-TV method: https://mrirecon.github.io/bart/. Please install the BART software before running our code for PLS-TV. Our implementation was successfully tested with `bart-0.5.00`. 
 
 #### Instructions
 1. Enter the `PLSTV` directory from root:
 ```
 cd PLSTV
 ```
-2. Run the script that performs PLS-TV using BART from an in-distribution (ind) or out-of-distribution (ood) k-space data and the corresponding data index (0-4). Example:
+2. Run the script that performs PLS-TV using BART given the distribution type and the corresponding data index. Example:
 ```
 python bart_plstv.py --dist-type ind --idx 2
 ```
