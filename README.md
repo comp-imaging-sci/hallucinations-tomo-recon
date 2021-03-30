@@ -42,6 +42,24 @@ python bart_plstv.py --dist-type ind --idx 2
 ```
 The reconstructed image will be saved in the subdirectory `recons_ind` or `recons_ood` depending on `dist-type`.
 
+## Deep Image Prior (DIP)
+DIP-based image reconstruction was performed using a randomly initialized network having the same architecture as the U-Net described above. The method was implemented in Tensorflow 1.14. The relevant hyperparameters used can be found in `DIP/run_dip_unet.sh` and `dip_main.py`. 
+
+
+#### Dependencies
+The codes for reconstructing images using DIP have been tested successfully using `tensorflow-gpu 1.15` installed with `conda`.
+
+#### Instructions
+1. Enter the `DIP` folder:
+```
+cd DIP
+```
+2. Run the following script to reconstruct an image from kspace data with index `i` (`i` goes from 0 to 4) and type `Type` (type is either `ind` or `ood`) as follows:
+```
+bash run_unet_test.sh $Type $i
+```
+3. The reconstructed images will be saved in new subdirectories `recons_ind` and `recons_ood` within the `DIP` folder.
+
 ## Computing hallucination maps
 An error map or a hallucination map can be computed after an image has been reconstructed. The type of map is indicated by entering any of the following arguments:
 * `em`: Error map
