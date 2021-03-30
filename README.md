@@ -47,7 +47,7 @@ DIP-based image reconstruction was performed using a randomly initialized networ
 
 
 #### Dependencies
-The codes for reconstructing images using DIP have been tested successfully using `tensorflow-gpu 1.15` installed with `conda`.
+The codes for reconstructing images using DIP have been tested successfully using `tensorflow-gpu 1.14` installed with `conda`, but should also work with the 1.15 version.
 
 #### Instructions
 1. Enter the `DIP` folder:
