@@ -56,7 +56,7 @@ cd DIP
 ```
 2. Run the following script to reconstruct an image from kspace data with index `i` (`i` goes from 0 to 4) and type `Type` (type is either `ind` or `ood`) as follows:
 ```
-bash run_unet_test.sh $Type $i
+bash run_dip_unet.sh $Type $i
 ```
 3. The reconstructed images will be saved in new subdirectories `recons_ind` and `recons_ood` within the `DIP` folder.
 
