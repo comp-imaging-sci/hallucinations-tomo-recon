@@ -83,6 +83,8 @@ python compute_specific_maps.py --recon-type UNET --dist-type ood --map-type nul
 ```
 The specific map is saved as a `.png` file in the subdirectory `[recon_type]_specific_[map_type]_[dist-type]`.
 
+**NOTE:** The true objects, reconstructed images and hallucination maps should be vertically flipped upside-down for display purposes.
+
 ## Citation
 ```
 @article{bhadra2020hallucinations,
