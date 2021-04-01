@@ -83,7 +83,14 @@ python compute_specific_maps.py --recon-type UNET --dist-type ood --map-type nul
 ```
 The specific map is saved as a `.png` file in the subdirectory `[recon_type]_specific_[map_type]_[dist-type]`.
 
-**NOTE:** The true objects, reconstructed images and hallucination maps should be vertically flipped upside-down for display purposes.
+**NOTE:** 
+
+1. The true objects, reconstructed images and hallucination maps should be vertically flipped upside-down for display purposes.
+
+2. The type of distribution and index corresponding to the figures shown in the paper for brain images are as follows:
+  1. Fig. 1 (bottom row): `--dist-type ood --idx 0`
+  2. Fig. 2: `--dist-type ind --idx 0`
+  3. Fig. 3: `--dist-type ood --idx 1`
 
 ## Citation
 ```
