@@ -31,7 +31,7 @@ pip install -r UNET/requirements.txt
 cd UNET
 ```
 
-2. Set the GPU device number in the script `models/unet/test_unet.py`. For example, to run the code on `device:0`, set the environment variable `CUDA_VISIBLE_DEVICES=0`:
+2. Set the GPU device number in the script `models/unet/test_unet.py`. For example, to run the code on `device:0`, set the environment variable `CUDA_VISIBLE_DEVICES=0` in line 31:
 ```
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 ```
