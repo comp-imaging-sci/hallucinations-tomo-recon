@@ -50,7 +50,7 @@ The reconstructed images will be saved in new subdirectories `recons_ind` and `r
 The Berkeley Advanced Reconstruction Toolbox (BART) is used for the PLS-TV method: https://mrirecon.github.io/bart/. Please install the BART software before running our code for PLS-TV. Our implementation was successfully tested with `bart-0.5.00`.
 
 #### Instructions
-1. Set the following environment variables for BART in the current shell:
+1. Set the following environment variables for BART in the current shell. Replace `/path/to/bart/` with the location where BART has been installed:
 ```
 export TOOLBOX_PATH=/path/to/bart/
 export PATH=$TOOLBOX_PATH:$PATH
