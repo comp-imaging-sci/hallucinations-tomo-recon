@@ -27,8 +27,8 @@ from data import transforms
 from models.mri_model import MRIModel
 from models.unet.unet_model import UnetModel
 
-os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   
-os.environ["CUDA_VISIBLE_DEVICES"]="0"
+#os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"   
+#os.environ["CUDA_VISIBLE_DEVICES"]="0"
 
 class DataTransform:
     """
