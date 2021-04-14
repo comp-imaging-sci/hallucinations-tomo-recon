@@ -3,7 +3,7 @@ Codes related to the paper "On hallucinations in tomographic image reconstructio
 
 ## System requirements
 * Linux
-* NVIDIA GPU(s)
+* 1 NVIDIA GPU
 * NVIDIA driver >= 440.59, CUDA toolkit >= 10.0
 * Python 3.6
 
@@ -25,31 +25,42 @@ The codes for reconstructing images using the pre-trained U-Net model have been 
 pip install -r UNET/requirements.txt
 ```
 
-
 #### Instructions
 1. Enter the `UNET` directory from root directory:
 ```
 cd UNET
 ```
-2. Run the following script to perform reconstruction using the saved U-Net model:
+
+2. Set the GPU device number in the script `models/unet/test_unet.py`. For example, to run the code on `device:0`, set the environment variable `CUDA_VISIBLE_DEVICES=0`:
+```
+os.environ["CUDA_VISIBLE_DEVICES"]="0"
+```
+
+3. Run the following script to perform reconstruction using the saved U-Net model:
 ```
 ./run_unet_test.sh
 ```
-3. Extract reconstructed images as numpy arrays from saved `.h5` files:
+4. Extract reconstructed images as numpy arrays from saved `.h5` files:
 ```
 python extract_recons.py
 ```
 The reconstructed images will be saved in new subdirectories `recons_ind` and `recons_ood`.
 
 ## PLS-TV
-The Berkeley Advanced Reconstruction Toolbox (BART) software is used for the PLS-TV method: https://mrirecon.github.io/bart/. Please install the BART software before running our code for PLS-TV. Our implementation was successfully tested with `bart-0.5.00`. 
+The Berkeley Advanced Reconstruction Toolbox (BART) is used for the PLS-TV method: https://mrirecon.github.io/bart/. Please install the BART software before running our code for PLS-TV. Our implementation was successfully tested with `bart-0.5.00`.
 
 #### Instructions
-1. Enter the `PLSTV` directory from root directory:
+1. Set the following environment variables for BART in the current shell:
+```
+export TOOLBOX_PATH=/path/to/bart/
+export PATH=$TOOLBOX_PATH:$PATH
+```
+
+2. Enter the `PLSTV` directory from root directory:
 ```
 cd PLSTV
 ```
-2. Run the script that performs PLS-TV using BART given the distribution type and the corresponding data index. Example:
+3. Run the script that performs PLS-TV using BART given the distribution type and the corresponding data index. Example:
 ```
 python bart_plstv.py --dist-type ind --idx 2
 ```

@@ -44,7 +44,7 @@ smap = np.ones([dim,dim],np.complex64)
 kspace = np.load(kspace_dir+'kspace_'+str(idx)+'.npy')
 kspace = kspace * dim
 kspace = kspace * mask
-#recon = bart(1,'pics -d2 -i200 -g G0 -S -R T:7:0:'+lmda,kspace,smap) # If running on GPU
+#recon = bart(1,'pics -d2 -i200 -g G0 -S -R T:7:0:'+lmda,kspace,smap) # If running on GPU (BART must be compiled with CUDA during installation)
 recon = bart(1,'pics -d2 -i200 -S -R T:7:0:'+lmda,kspace,smap) # If running on CPU
 recon = np.abs(recon)/dim
 np.save(recon_dir+'recon_'+str(idx)+'.npy',recon)
