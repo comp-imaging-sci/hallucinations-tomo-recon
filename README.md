@@ -1,6 +1,14 @@
 # hallucinations-tomo-recon
 Codes related to the paper "On hallucinations in tomographic image reconstruction" by Bhadra *et al.*: https://arxiv.org/pdf/2012.00646.pdf.
 
+## System requirements
+* Linux
+* NVIDIA GPU(s)
+* NVIDIA driver >= 440.59, CUDA toolkit >= 10.0
+* Python 3.6
+
+Additional dependencies that are required for the reconstruction methods and for computing hallucination maps are mentioned under each section.
+
 ## Directory structure and usage
 * `recon_data`: Contains 5 data samples each (indexed as 0-4) from in-distribution (ind) and out-of-distribution (ood) data. Each data sample contains the true object, segmentation mask and simulated k-space data.
 * `UNET`: Contains codes used for reconstructing image using a pre-trained U-Net model.
@@ -16,6 +24,7 @@ The codes for reconstructing images using the pre-trained U-Net model have been 
 ```
 pip install -r UNET/requirements.txt
 ```
+
 
 #### Instructions
 1. Enter the `UNET` directory from root directory:
@@ -65,6 +74,13 @@ bash run_dip_unet.sh $Type $i
 3. The reconstructed images will be saved in new subdirectories `recons_ind` and `recons_ood` within the `DIP` folder.
 
 ## Computing hallucination maps
+
+### Dependencies
+* `numpy 1.18.2`
+* `scipy 1.3.0`
+* `Pillow 6.2.1`
+* `scikit-image 0.16.2`
+
 An error map or a hallucination map can be computed after an image has been reconstructed. The type of map is indicated by entering any of the following arguments:
 * `em`: Error map
 * `meas_hm`: Measurement space hallucination map

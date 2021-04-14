@@ -6,7 +6,6 @@ from skimage import morphology
 from skimage.measure import label
 from scipy.ndimage import gaussian_filter
 import os
-import matplotlib.pyplot as plt
 import argparse
 
 parser = argparse.ArgumentParser()
