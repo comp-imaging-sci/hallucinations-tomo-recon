@@ -88,14 +88,14 @@ bash run_dip_unet.sh $Type $i
 
 ## Computing hallucination maps
 
-### Dependencies
-* `scipy 1.3.0`
-* `scikit-image 0.16.2`
-
 An error map or a hallucination map can be computed after an image has been reconstructed. The type of map is indicated by entering any of the following arguments:
 * `em`: Error map
 * `meas_hm`: Measurement space hallucination map
 * `null_hm`: Null space hallucination map
+
+### Dependencies
+* `scipy 1.3.0`
+* `scikit-image 0.16.2`
 
 #### Instructions
 1. Enter the directory `compute_maps` from root directory:
