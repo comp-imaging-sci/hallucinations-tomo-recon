@@ -10,7 +10,7 @@ Codes related to the paper "On hallucinations in tomographic image reconstructio
 Additional dependencies that are required for the reconstruction methods and for computing hallucination maps are mentioned under each section.
 
 ## Directory structure and usage
-* `recon_data`: Contains 5 data samples each (indexed as 0-4) from in-distribution (ind) and out-of-distribution (ood) data. Each data sample contains the true object, segmentation mask and simulated k-space data.
+* `recon_data`: Contains 5 data samples each (indexed as 0-4) from in-distribution (`ind`) and out-of-distribution (`ood`) data. Each data sample contains the true object, segmentation mask and simulated k-space data.
 * `UNET`: Contains codes used for reconstructing image using a pre-trained U-Net model.
 * `PLSTV`: Contains code for reconstructing image by use of the PLS-TV method.
 * `compute_maps`: Contains codes for computing hallucination maps and specific maps.
@@ -36,7 +36,7 @@ cd UNET
 os.environ["CUDA_VISIBLE_DEVICES"]="0"
 ```
 
-3. Run the following script to perform reconstruction using the saved U-Net model:
+3. Run the following script to perform reconstruction from all 5 `ind` and `ood` k-space data samples using the saved U-Net model:
 ```
 ./run_unet_test.sh
 ```
