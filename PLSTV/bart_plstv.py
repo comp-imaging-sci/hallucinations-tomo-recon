@@ -1,4 +1,9 @@
 """
+
+Copyright (c) Computational Imaging Science Lab @ UIUC (2021)
+Author      : Sayantan Bhadra
+Email       : sayantanbhadra@wustl.edu
+
 Script for performing PLS-TV reconstruction using the BART toolbox.
 See intructions for installing the BART toolbox here: https://mrirecon.github.io/bart/
 Recommended BART version >= 0.5.00
@@ -15,6 +20,12 @@ sys.path.append(path)
 from bart import bart
 import argparse
 import cfl
+from PIL import Image
+
+# Function for converting float32 image array to uint8 array in the range [0,255]
+def convert_to_uint(img):
+    img = 255 * (img-img.min())/(img.max()-img.min())
+    return img.astype(np.uint8)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--dist-type",choices=['ind','ood'],required=True,help="Type of data distribution")
@@ -48,6 +59,8 @@ kspace = kspace * mask
 recon = bart(1,'pics -d2 -i200 -S -R T:7:0:'+lmda,kspace,smap) # If running on CPU
 recon = np.abs(recon)/dim
 np.save(recon_dir+'recon_'+str(idx)+'.npy',recon)
+recon_im = Image.fromarray(convert_to_uint(recon))
+recon_im.save(recon_dir+'recon_'+str(idx)+'.png')
 
 
 

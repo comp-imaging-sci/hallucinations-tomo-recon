@@ -3,9 +3,11 @@ Codes related to the paper "On hallucinations in tomographic image reconstructio
 
 ## System requirements
 * Linux
-* 1 NVIDIA GPU
-* NVIDIA driver >= 440.59, CUDA toolkit >= 10.0
 * Python 3.6
+* Numpy 1.18.2
+* Pillow 6.2.1
+* 1 NVIDIA GPU (compute capability GeForce GTX 1080 or higher and minimum 8 GB RAM)
+* NVIDIA driver >= 440.59, CUDA toolkit >= 10.0
 
 Additional dependencies that are required for the reconstruction methods and for computing hallucination maps are mentioned under each section.
 
@@ -44,7 +46,7 @@ os.environ["CUDA_VISIBLE_DEVICES"]="0"
 ```
 python extract_recons.py
 ```
-The reconstructed images will be saved in new subdirectories `recons_ind` and `recons_ood`.
+The reconstructed images will be saved in new subdirectories `recons_ind` and `recons_ood` within the `UNET` folder.
 
 ## PLS-TV
 The Berkeley Advanced Reconstruction Toolbox (BART) is used for the PLS-TV method: https://mrirecon.github.io/bart/. Please install the BART software before running our code for PLS-TV. Our implementation was successfully tested with `bart-0.5.00`.
@@ -64,7 +66,7 @@ cd PLSTV
 ```
 python bart_plstv.py --dist-type ind --idx 2
 ```
-The reconstructed image will be saved in the subdirectory `recons_ind` or `recons_ood` depending on `dist-type`.
+The reconstructed images will be saved in new subdirectories `recons_ind` and `recons_ood` under the `PLSTV` folder.
 
 ## Deep Image Prior (DIP)
 DIP-based image reconstruction was performed using a randomly initialized network having the same architecture as the U-Net described above. The method was implemented in Tensorflow 1.14. The relevant hyperparameters used can be found in `DIP/run_dip_unet.sh` and `dip_main.py`. 
@@ -87,9 +89,7 @@ bash run_dip_unet.sh $Type $i
 ## Computing hallucination maps
 
 ### Dependencies
-* `numpy 1.18.2`
 * `scipy 1.3.0`
-* `Pillow 6.2.1`
 * `scikit-image 0.16.2`
 
 An error map or a hallucination map can be computed after an image has been reconstructed. The type of map is indicated by entering any of the following arguments:

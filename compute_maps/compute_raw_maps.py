@@ -1,9 +1,16 @@
-# Compute raw error map, measurement space hallucination map and null space hallucination map
-# Note that for display and further analysis the absolute value is taken after computing each map
+"""
+Copyright (c) Computational Imaging Science Lab @ UIUC (2021)
+Author      : Sayantan Bhadra
+Email       : sayantanbhadra@wustl.edu
+
+Compute raw error map, measurement space hallucination map and null space hallucination map
+Note that for display and further analysis the absolute value is taken after computing each map
+"""
 import numpy as np 
 import os
 import numpy.fft as fft
 import argparse
+from PIL import Image
 
 # Forward operator 
 def forward(f,mask):
@@ -35,6 +42,12 @@ def null_hm(recon,gt,mask):
     h_map = recon_null - gt_null
     h_map[recon_null==0]=0
     return h_map
+
+# Function for converting float32 image array to uint8 array in the range [0,255]
+def convert_to_uint(img):
+    img = 255 * (img-img.min())/(img.max()-img.min())
+    return img.astype(np.uint8)
+
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--recon-type",choices=['UNET','PLSTV','DIP'],required=True,help="Type of reconstruction method")
@@ -77,8 +90,13 @@ elif map_type == 'meas_hm':
 else: # map_type == 'null_hm'
     map = np.abs(null_hm(recon,gt,mask))
 
-# Save the map
+# Save the map as numpy array
 np.save(map_dir+'map_'+str(idx)+'.npy',map)
+
+# Save the map as a png image file
+map_im = Image.fromarray(convert_to_uint(map))
+map_im.save(map_dir+'map_'+str(idx)+'.png')
+
 
 
 

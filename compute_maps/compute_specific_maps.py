@@ -1,4 +1,10 @@
-# Create specific map from raw map
+""""
+Copyright (c) Computational Imaging Science Lab @ UIUC (2021)
+Author      : Sayantan Bhadra
+Email       : sayantanbhadra@wustl.edu
+
+Create specific map from raw map
+"""
 import numpy as np 
 from PIL import Image
 from skimage import exposure
@@ -20,10 +26,12 @@ dist_type = args.dist_type
 map_type = args.map_type
 idx = args.idx
 
+# Function for converting float32 image array to uint8 array in the range [0,255]
 def convert_to_uint(img):
     img = 255 * (img-img.min())/(img.max()-img.min())
     return img.astype(np.uint8)
 
+# Function for binary thresholding
 def threshold(img,th_p):
     th_value = np.percentile(img,th_p)
     return (img>th_value).astype(np.uint8)
