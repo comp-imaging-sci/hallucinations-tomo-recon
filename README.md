@@ -8,10 +8,14 @@ Codes related to the paper "On hallucinations in tomographic image reconstructio
 * `compute_maps`: Contains codes for computing hallucination maps and specific maps.
 
 ## U-Net
-The U-Net model was trained using codes from https://github.com/facebookresearch/fastMRI which uses `pytorch` and `pytorch-lightning`. We have placed the pre-trained model used in our numerical studies as `UNET/experiments/h_map/epoch\=49.ckpt` which can be used to reconstruct images from the test dataset. The hyperparameters used during training can be found at `UNET/experiments/h_map/meta_tags.csv`.
+The U-Net model was trained using codes from https://github.com/facebookresearch/fastMRI. We have placed the pre-trained model used in our numerical studies as `UNET/experiments/h_map/epoch\=49.ckpt` which can be used to reconstruct images from the test dataset. The hyperparameters used during training can be found at `UNET/experiments/h_map/meta_tags.csv`.
 
 #### Dependencies
-The codes for reconstructing images using the trained U-Net model have been tested successfully using the `pytorch` virtual environment installed with `conda 4.5.12`. The relevant softwares which are pre-requisites and must be installed within the virtual environment have been listed in `UNET/requirements.txt`.
+The codes for reconstructing images using the pre-trained U-Net model have been tested successfully using `pytorch 1.3.1` and `pytorch-lightning 0.7.3` in a conda virtual environment (`conda 4.5.12`). The relevant software libraries which are pre-requisites and must be installed within the virtual environment have been listed in `UNET/requirements.txt`. These dependencies can be installed with `pip` by use of the following command from the root directory:
+
+```
+pip install -r UNET/requirements.txt
+```
 
 #### Instructions
 1. Enter the `UNET` directory from root directory:
