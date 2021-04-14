@@ -93,7 +93,7 @@ An error map or a hallucination map can be computed after an image has been reco
 * `meas_hm`: Measurement space hallucination map
 * `null_hm`: Null space hallucination map
 
-### Dependencies
+#### Dependencies
 * `scipy 1.3.0`
 * `scikit-image 0.16.2`
 
