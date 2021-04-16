@@ -3,7 +3,8 @@ Codes related to the paper "On hallucinations in tomographic image reconstructio
 
 ## System requirements
 * Linux
-* Python 3.6
+* Anaconda >= 2018.2 
+* Python 3.6+
 * Numpy 1.18.2
 * Pillow 6.2.1
 * 1 NVIDIA GPU (compute capability GeForce GTX 1080 or higher and minimum 8 GB RAM)
