@@ -4,7 +4,7 @@ Codes related to the paper "On hallucinations in tomographic image reconstructio
 ## System requirements
 * Linux
 * Anaconda >= 2018.2 
-* Python 3.6+
+* Python 3.6
 * Numpy 1.18.2
 * Pillow 6.2.1
 * 1 NVIDIA GPU (compute capability GeForce GTX 1080 or higher and minimum 8 GB RAM)
@@ -22,8 +22,16 @@ Additional dependencies that are required for the reconstruction methods and for
 The U-Net model was trained using codes from https://github.com/facebookresearch/fastMRI. We have placed the pre-trained model used in our numerical studies as `UNET/experiments/h_map/epoch\=49.ckpt` which can be used to reconstruct images from the test dataset. The hyperparameters used during training can be found at `UNET/experiments/h_map/meta_tags.csv`.
 
 #### Dependencies
-The codes for reconstructing images using the pre-trained U-Net model have been tested successfully using `pytorch 1.3.1` and `pytorch-lightning 0.7.3` in a virtual environment created with `conda`. The relevant software libraries which are pre-requisites and must be installed within the virtual environment have been listed in `UNET/requirements.txt`. These dependencies can be installed with `pip` by use of the following command from the root directory:
+The codes for reconstructing images using the pre-trained U-Net model have been tested successfully using `pytorch` and `pytorch-lightning` in a virtual environment created with `conda`. First, create a virtual environment named `unet` using `conda` that installs `python-3.6` as follows:
 
+```
+conda create -n unet python=3.6
+```
+The `unet` environment can be activated by typing
+```
+conda activate unet
+```
+After the `unet` virtual environment has been activated, install `pytorch-1.3.1` and `pytorch-lightning-0.7.3` along with other relevant dependencies using `pip` with the following command:
 ```
 pip install -r ./UNET/requirements.txt
 ```
@@ -95,8 +103,8 @@ An error map or a hallucination map can be computed after an image has been reco
 * `null_hm`: Null space hallucination map
 
 #### Dependencies
-* `scipy 1.3.0`
-* `scikit-image 0.16.2`
+* `scipy-1.3.0`
+* `scikit-image-0.16.2`
 
 #### Instructions
 1. Enter the directory `compute_maps` from root directory:
