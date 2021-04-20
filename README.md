@@ -31,7 +31,7 @@ The `unet` environment can be activated by typing
 ```
 conda activate unet
 ```
-After the `unet` virtual environment has been activated, install `pytorch-1.3.1` and `pytorch-lightning-0.7.3` along with other relevant dependencies using `pip` with the following command:
+After the `unet` virtual environment has been activated, install `pytorch-1.3.1` and `pytorch-lightning-0.7.3` along with other relevant dependencies using `pip` with the following command from the root directory:
 ```
 pip install -r ./UNET/requirements.txt
 ```
