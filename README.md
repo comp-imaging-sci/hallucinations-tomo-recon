@@ -133,10 +133,12 @@ The specific map is saved as a `.png` file in the subdirectory `[recon_type]_spe
 
 ## Citation
 ```
-@article{bhadra2020hallucinations,
+@article{bhadra2021hallucinations,
   title={On hallucinations in tomographic image reconstruction},
   author={Bhadra, Sayantan and Kelkar, Varun A and Brooks, Frank J and Anastasio, Mark A},
-  journal={arXiv preprint arXiv:2012.00646},
-  year={2020}
+  journal={IEEE Transactions on Medical Imaging},
+  year={2021},
+  publisher={IEEE}
 }
+
 ```
