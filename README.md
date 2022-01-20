@@ -1,5 +1,5 @@
 # hallucinations-tomo-recon
-Codes related to the paper "On hallucinations in tomographic image reconstruction" by Bhadra *et al.*: https://arxiv.org/pdf/2012.00646.pdf.
+Codes related to the paper "On hallucinations in tomographic image reconstruction" by Bhadra *et al.* published in IEEE Transactions on Meedical Imaging (2021) - Second Special Issue on Machine Learning for Image Reconstruction: https://ieeexplore.ieee.org/document/9424044
 
 ## System requirements
 * Linux
